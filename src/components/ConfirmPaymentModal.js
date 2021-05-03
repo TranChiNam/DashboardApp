@@ -26,6 +26,7 @@ export default ({ objData, setClose }) => {
       const transactionId = form.getFieldValue('transactionId');
 
       const res = await postForm({ amount, bankId, bankName, transactionId });
+      //  TODO: check response here
       console.log(res);
       message.success('This is a prompt message for success, and it will disappear in 20 seconds', 20)
       setClose({ bRefresh: true });

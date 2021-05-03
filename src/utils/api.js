@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-
+// TODO: change url here
 const objURL = {
   list: `localhost:8080/orders/list`,
   changeStatus: `localhost:8080/orders/status/update`,
@@ -31,7 +31,7 @@ export const updateStatus = (dataBody = {}) =>
   });
 
 
-export const postForm = ({ url, dataBody = {} }) =>
+export const postForm = (dataBody = {}) =>
   new Promise((resolve, reject) => {
     axios.post(
       objURL.confirmPayment,

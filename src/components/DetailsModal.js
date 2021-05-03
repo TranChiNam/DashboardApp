@@ -21,14 +21,14 @@ export default ({ objData, setClose }) => {
   const [bLoading, setLoading] = useState(false);
 
   const { id, buyerEmail, dateTime, deliveryMethodId, paymentIntentId, status, subTotal, internalStatus, items } = objData;
-  console.log(objData);
-  const onFinish = (values) => {
-    console.log(values);
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  };
+  // console.log(objData);
+  // const onFinish = (values) => {
+  //   console.log(values);
+  //   setLoading(true);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 2000);
+  // };
 
   const columns = [
     {
@@ -56,7 +56,7 @@ export default ({ objData, setClose }) => {
 
   return (
     <CustomModal szTitle={`Chi tiết đơn hàng số #${id}`} bVisible={!!Object.keys(objData).length} setClose={setClose}>
-      <Form {...layout} form={form} name="control-hooks" onFinish={onFinish}>
+      <Form {...layout} form={form} name="control-hooks">
         <Row>
           <Col span={12}>
             <Form.Item label="Email">
