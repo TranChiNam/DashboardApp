@@ -132,9 +132,10 @@ export default () => {
 
   return (
     <div className="App" style={{ padding: 15, marginTop: 20 }}>
-      <Table rowKey="id" dataSource={DATA} columns={columns} />
+      {/* <Table rowKey="id" dataSource={DATA} columns={columns} /> */}
+      <Table rowKey="id" dataSource={lstData} columns={columns} />
       <DetailsModal objData={objDetails} setClose={() => setObjDetails({})} />
-      <ConfirmPaymentModal objData={objConfirmPayment} setClose={async (bRefresh) => {
+      <ConfirmPaymentModal objData={objConfirmPayment} setClose={async (bRefresh = false) => {
         setObjConfirmPayment({});
         if (bRefresh) { await fetchLstData() }
       }} />
