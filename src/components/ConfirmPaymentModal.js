@@ -24,8 +24,9 @@ export default ({ objData, setClose }) => {
       const bankId = form.getFieldValue('bankId');
       const bankName = form.getFieldValue('bankName');
       const transactionId = form.getFieldValue('transactionId');
-
-      const res = await postForm({ amount, bankId, bankName, transactionId });
+      const bodyData = { orderId: objData.id, amount, bankId, bankName, transactionId };
+      console.log(bodyData);
+      const res = await postForm(bodyData);
       //  TODO: check response here
       console.log(res);
       message.success('This is a prompt message for success, and it will disappear in 20 seconds', 20)
