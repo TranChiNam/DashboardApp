@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Tag, Button, Modal, Tooltip } from 'antd';
+import { Table, Tag, Button, Modal, message } from 'antd';
 import { DATA } from './utils/data';
 import { getData, updateStatus } from './utils/api';
 // import ModalContent from './components/ModalContent';
@@ -48,8 +48,19 @@ export default () => {
     setObjDetails(record);
   }
 
-  const handleChangeStatus = ({ id, internalStatus, expectInternalStatus = 1 }) => {
-    updateStatus({ orderId: id, currentInternalStatus: internalStatus, expectInternalStatus })
+  const handleChangeStatus = async ({ id, internalStatus, expectInternalStatus = 1 }) => {
+    try {
+
+      const res = await updateStatus({ orderId: id, currentInternalStatus: internalStatus, expectInternalStatus })
+      //  TODO: check response here
+      if (res) {
+        message.success('This is a prompt message for success, and it will disappear in 10 seconds', 10)
+        fetchLstData();
+      }
+    } catch (err) {
+      message.error('Error, and it will disappear in 10 seconds', 10)
+      console.log(err);
+    }
   }
 
   const handleConfirmPayment = (record) => {
