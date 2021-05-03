@@ -34,9 +34,9 @@ export default () => {
   const [objDetails, setObjDetails] = useState({});
   const [objConfirmPayment, setObjConfirmPayment] = useState({});
 
-  // useEffect(() => {
-  //   return fetchLstData();
-  // }, [])
+  useEffect(() => {
+    return fetchLstData();
+  }, [])
 
   const fetchLstData = async () => {
     const res = await getData(`localhost:8080/orders/list`);
@@ -106,7 +106,7 @@ export default () => {
             <Button type="primary" onClick={() => handleConfirmPayment(record)} style={{ marginTop: 4 }}>Chờ xác nhận thanh toán</Button>
           </div>} */}
           {record.internalStatus === 5 && <div>
-            <Button type="primary" onClick={() => handleChangeStatus({ ...record, expectInternalStatus: 7 })} style={{ marginTop: 4 }}>Duyệt công nợ</Button>
+            <Button type="primary" onClick={() => showConfirm(record.subTotal)} style={{ marginTop: 4 }}>Duyệt công nợ</Button>
             <div>
               <Button type="primary" onClick={() => handleChangeStatus({ ...record, expectInternalStatus: 6 })} style={{ marginTop: 4 }}>Hủy</Button>
             </div>
@@ -135,8 +135,8 @@ export default () => {
       <Table rowKey="id" dataSource={DATA} columns={columns} />
       <DetailsModal objData={objDetails} setClose={() => setObjDetails({})} />
       <ConfirmPaymentModal objData={objConfirmPayment} setClose={async (bRefresh) => {
-        if (bRefresh) { await fetchLstData(); }
-        setObjConfirmPayment({})
+        setObjConfirmPayment({});
+        if (bRefresh) { await fetchLstData() }
       }} />
     </div>
   );
