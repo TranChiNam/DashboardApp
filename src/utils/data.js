@@ -356,4 +356,72 @@ export const DATA = [
     "status": 1,
     "dateTime": "2021-05-02T22:01:36.000+00:00"
   },
+  {
+    "items": [
+      {
+        "priceAsOrder": 670000.00,
+        "quantity": 1,
+        "productTypeName": "Đầm",
+        "productBranchName": "REN",
+        "name": "Đầm 115120937",
+        "id": 3,
+        "description": null,
+        "isDeleted": false,
+        "isDeactivate": false,
+        "datetime": "2021-05-03T03:22:00.000+00:00",
+        "price": 659400.00,
+        "pictureUrl": "https://yoshino.com.vn/wp-content/uploads/2014/12/AHB_4534-Custom.jpg",
+        "productTypeId": 1,
+        "productBrandId": 1,
+        "datetimeProcessed": null
+      }
+    ],
+    "id": 12,
+    "subTotal": 670000.00,
+    "buyerEmail": "haonguyen@gmail.com",
+    "shipToAddressId": 1,
+    "isDeleted": false,
+    "orderDate": "2021-05-03T01:37:33.000+00:00",
+    "isDeactivate": false,
+    "internalStatus": 10,
+    "paymentIntentId": "1",
+    "dateTimeProcessed": null,
+    "deliveryMethodId": 2,
+    "status": 1,
+    "dateTime": "2021-05-02T22:01:36.000+00:00"
+  },
+  {
+    "items": [
+      {
+        "priceAsOrder": 670000.00,
+        "quantity": 1,
+        "productTypeName": "Đầm",
+        "productBranchName": "REN",
+        "name": "Đầm 115120937",
+        "id": 3,
+        "description": null,
+        "isDeleted": false,
+        "isDeactivate": false,
+        "datetime": "2021-05-03T03:22:00.000+00:00",
+        "price": 659400.00,
+        "pictureUrl": "https://yoshino.com.vn/wp-content/uploads/2014/12/AHB_4534-Custom.jpg",
+        "productTypeId": 1,
+        "productBrandId": 1,
+        "datetimeProcessed": null
+      }
+    ],
+    "id": 13,
+    "subTotal": 670000.00,
+    "buyerEmail": "haonguyen@gmail.com",
+    "shipToAddressId": 1,
+    "isDeleted": false,
+    "orderDate": "2021-05-03T01:37:33.000+00:00",
+    "isDeactivate": false,
+    "internalStatus": 11,
+    "paymentIntentId": "1",
+    "dateTimeProcessed": null,
+    "deliveryMethodId": 2,
+    "status": 1,
+    "dateTime": "2021-05-02T22:01:36.000+00:00"
+  },
 ]

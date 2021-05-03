@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CustomModal from './Modal';
 import { formatDatetime } from '../utils/helpers';
 import { STATUS, INTERNAL_STATUS } from '../utils/constants';
-import { Form, Input, Button, Select, Row, Col } from 'antd';
+import { Form, Input, Table, Select, Row, Col } from 'antd';
 
 const layout = {
   labelCol: {
@@ -20,7 +20,7 @@ export default ({ objData, setClose }) => {
 
   const [bLoading, setLoading] = useState(false);
 
-  const { buyerEmail, dateTime, deliveryMethodId, paymentIntentId, status, subTotal, internalStatus } = objData;
+  const { id, buyerEmail, dateTime, deliveryMethodId, paymentIntentId, status, subTotal, internalStatus, items } = objData;
   console.log(objData);
   const onFinish = (values) => {
     console.log(values);
@@ -30,8 +30,32 @@ export default ({ objData, setClose }) => {
     }, 2000);
   };
 
+  const columns = [
+    {
+      title: 'Tên sản phẩm',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Hình ảnh',
+      dataIndex: 'pictureUrl',
+      key: 'pictureUrl',
+      render: pictureUrl => <img src={pictureUrl} alt="img" style={{ maxHeight: 60 }} />,
+    },
+    {
+      title: 'Đơn giá',
+      dataIndex: 'price',
+      key: 'price',
+    },
+    {
+      title: 'Mô tả',
+      dataIndex: 'description',
+      key: 'description',
+    },
+  ]
+
   return (
-    <CustomModal szTitle="Chi tiết đơn hàng" bVisible={!!Object.keys(objData).length} setClose={setClose}>
+    <CustomModal szTitle={`Chi tiết đơn hàng số #${id}`} bVisible={!!Object.keys(objData).length} setClose={setClose}>
       <Form {...layout} form={form} name="control-hooks" onFinish={onFinish}>
         <Row>
           <Col span={12}>
@@ -87,17 +111,7 @@ export default ({ objData, setClose }) => {
             ) : null
           }
         </Form.Item>
-        {/* <Form.Item {...tailLayout}>
-				<Button type="ghost" htmlType="submit" loading={bLoading}>
-					Submit
-        </Button>
-				<Button htmlType="button" onClick={onReset}>
-					Reset
-        </Button>
-				<Button type="link" htmlType="button" onClick={onFill}>
-					Fill form
-        </Button>
-			</Form.Item> */}
+        <Table rowKey="id" dataSource={items} columns={columns} pagination={false} />
       </Form>
     </CustomModal>
   );

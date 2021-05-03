@@ -91,37 +91,37 @@ export default () => {
       key: 'actions',
       render: (record) => (
         <>
-          <Button type="primary" onClick={() => handleViewDetail(record)}>Hiển thị chi tiết</Button>
+          <Button type="primary" onClick={() => handleViewDetail(record)} style={{ width: 175, marginTop: 4 }}>Hiển thị chi tiết</Button>
           {record.internalStatus === 2 && <div>
-            <Button type="primary" onClick={() => handleChangeStatus({ ...record, expectInternalStatus: 5 })} style={{ marginTop: 4 }}>Yêu cầu duyệt công nợ</Button>
+            <Button type="primary" onClick={() => handleChangeStatus({ ...record, expectInternalStatus: 5 })} style={{ width: 175, marginTop: 4 }}>Yêu cầu duyệt công nợ</Button>
             <div>
-              <Button type="primary" onClick={() => handleConfirmPayment(record)} style={{ marginTop: 4 }}>Duyệt thanh toán</Button>
+              <Button type="primary" onClick={() => handleConfirmPayment(record)} style={{ width: 175, marginTop: 4 }}>Duyệt thanh toán</Button>
             </div>
           </div>}
           {record.internalStatus === 3 || record.internalStatus === 7 ? <div>
-            <Button type="primary" onClick={() => handleChangeStatus({ ...record, expectInternalStatus: 8 })} style={{ marginTop: 4 }}>Duyệt công nợ</Button>
-            <div> <Button type="primary" onClick={() => handleConfirmPayment(record)} style={{ marginTop: 4 }}>Duyệt thanh toán</Button></div>
+            <Button type="primary" onClick={() => handleChangeStatus({ ...record, expectInternalStatus: 8 })} style={{ width: 175, marginTop: 4 }}>Duyệt công nợ</Button>
+            <div> <Button type="primary" onClick={() => handleConfirmPayment(record)} style={{ width: 175, marginTop: 4 }}>Duyệt thanh toán</Button></div>
           </div> : null}
           {/* {record.internalStatus === 4 && <div>
-            <Button type="primary" onClick={() => handleConfirmPayment(record)} style={{ marginTop: 4 }}>Chờ xác nhận thanh toán</Button>
+            <Button type="primary" onClick={() => handleConfirmPayment(record)}style={{width: 175, marginTop:4}}>Chờ xác nhận thanh toán</Button>
           </div>} */}
           {record.internalStatus === 5 && <div>
-            <Button type="primary" onClick={() => showConfirm(record.subTotal)} style={{ marginTop: 4 }}>Duyệt công nợ</Button>
+            <Button type="primary" onClick={() => showConfirm(record.subTotal)} style={{ width: 175, marginTop: 4 }}>Duyệt công nợ</Button>
             <div>
-              <Button type="primary" onClick={() => handleChangeStatus({ ...record, expectInternalStatus: 6 })} style={{ marginTop: 4 }}>Hủy</Button>
+              <Button type="primary" onClick={() => handleChangeStatus({ ...record, expectInternalStatus: 6 })} style={{ width: 175, marginTop: 4 }}>Hủy</Button>
             </div>
           </div>}
           {record.internalStatus === 8 && <div>
-            <Button type="primary" onClick={() => handleChangeStatus({ ...record, expectInternalStatus: 9 })} style={{ marginTop: 4 }}>Xuất hàng</Button>
+            <Button type="primary" onClick={() => handleChangeStatus({ ...record, expectInternalStatus: 9 })} style={{ width: 175, marginTop: 4 }}>Xuất hàng</Button>
           </div>}
           {record.internalStatus === 9 && <div>
-            <Button type="primary" onClick={() => handleChangeStatus({ ...record, expectInternalStatus: 12 })} style={{ marginTop: 4 }}>Xuất Kho</Button>
+            <Button type="primary" onClick={() => handleChangeStatus({ ...record, expectInternalStatus: 12 })} style={{ width: 175, marginTop: 4 }}>Xuất Kho</Button>
           </div>}
           {record.internalStatus === 12 && <div>
-            <Button type="primary" onClick={() => handleChangeStatus({ ...record, expectInternalStatus: 10 })} style={{ marginTop: 4 }}>Giao hàng</Button>
+            <Button type="primary" onClick={() => handleChangeStatus({ ...record, expectInternalStatus: 10 })} style={{ width: 175, marginTop: 4 }}>Giao hàng</Button>
           </div>}
           {record.internalStatus === 10 && <div>
-            <Button type="primary" onClick={() => handleChangeStatus({ ...record, expectInternalStatus: 11 })} style={{ marginTop: 4 }}>Giao hàng thành công</Button>
+            <Button type="primary" onClick={() => handleChangeStatus({ ...record, expectInternalStatus: 11 })} style={{ width: 175, marginTop: 4 }}>Giao hàng thành công</Button>
           </div>}
         </>
       ),
@@ -131,9 +131,11 @@ export default () => {
   console.log(DATA);
 
   return (
-    <div className="App" style={{ padding: 15, marginTop: 20 }}>
-      {/* <Table rowKey="id" dataSource={DATA} columns={columns} /> */}
-      <Table rowKey="id" dataSource={lstData} columns={columns} />
+    <div className="App">
+
+      <Table rowKey="id" dataSource={DATA} columns={columns} />
+      {/* <Table rowKey="id" dataSource={lstData} columns={columns} /> */}
+
       <DetailsModal objData={objDetails} setClose={() => setObjDetails({})} />
       <ConfirmPaymentModal objData={objConfirmPayment} setClose={async (bRefresh = false) => {
         setObjConfirmPayment({});
